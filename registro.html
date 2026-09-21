@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro de Vehículo</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Registro de Vehículo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Registro de Vehículo</h2>
-    <form action="reparaciones.html" method="get">
-        <label>Cédula: <input type="text" name="cedula"></label><br>
-        <label>Teléfono: <input type="text" name="telefono"></label><br>
-        <label>Marca: <input type="text" name="marca"></label><br>
-        <label>Cilindraje (moto): <input type="text" name="cilindraje"></label><br>
-        <label>Color: <input type="text" name="color"></label><br>
-        <label>Placas: <input type="text" name="placas"></label><br>
-        <button type="submit">Continuar</button>
-    </form>
+  <h2>Registrar Vehículo</h2>
+  <form action="mecanico.html" method="get">
+    <label for="cedula">Cédula:</label>
+    <input type="text" id="cedula" name="cedula" required><br><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" required><br><br>
+
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" name="marca" required><br><br>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" required><br><br>
+
+    <label for="placas">Placas:</label>
+    <input type="text" id="placas" name="placas" required><br><br>
+
+    <button type="submit">Continuar</button>
+  </form>
 </body>
 </html>
+

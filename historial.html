@@ -7,10 +7,28 @@
 </head>
 <body>
   <h2>Historial del Vehículo</h2>
-  <p>Cliente: Juan Gómez</p>
-  <p>Vehículo: Moto Yamaha 150cc</p>
-  <p>Placas: XYZ789</p>
-  <p>Reparaciones realizadas: Cambio de aceite, ajuste de frenos</p>
-  <a href="salida.html">Salida del vehículo</a>
+  <p>Cédula: <span id="cedula"></span></p>
+  <p>Teléfono: <span id="telefono"></span></p>
+  <p>Marca: <span id="marca"></span></p>
+  <p>Color: <span id="color"></span></p>
+  <p>Placas: <span id="placas"></span></p>
+  <p>Hora de entrada: <span id="horaEntrada"></span></p>
+  <a href="salida.html">Registrar salida</a>
+
+  <script>
+    // Obtener parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Mostrar datos del usuario
+    document.getElementById("cedula").textContent = params.get("cedula");
+    document.getElementById("telefono").textContent = params.get("telefono");
+    document.getElementById("marca").textContent = params.get("marca");
+    document.getElementById("color").textContent = params.get("color");
+    document.getElementById("placas").textContent = params.get("placas");
+
+    // Mostrar la hora de entrada (pasada desde mecanico/proceso)
+    const horaEntrada = params.get("horaEntrada");
+    document.getElementById("horaEntrada").textContent = horaEntrada ? horaEntrada : "No registrada";
+  </script>
 </body>
 </html>

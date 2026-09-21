@@ -2,12 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Proceso de Reparación</title>
+  <title>Vehículo en Reparación</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>El vehículo está siendo reparado</h2>
-  <p>Hora de inicio: 10:00 AM</p>
-  <a href="finalizado.html">Finalizar reparación</a>
+  <h2>Estado del Vehículo</h2>
+  <p>El vehículo está en reparación</p>
+  <p>Hora de entrada: <span id="horaEntrada"></span></p>
+  <p>Placas del vehículo: <span id="placas"></span></p>
+  <a href="finalizado.html">Ver reparación finalizada</a>
+
+  <script>
+    // Obtener parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Mostrar placas
+    const placas = params.get("placas");
+    document.getElementById("placas").textContent = placas;
+
+    // Mostrar la hora actual (cuando se abre la página)
+    const ahora = new Date();
+    const hora = ahora.getHours().toString().padStart(2, '0') + ":" +
+                 ahora.getMinutes().toString().padStart(2, '0');
+    document.getElementById("horaEntrada").textContent = hora;
+  </script>
 </body>
 </html>
