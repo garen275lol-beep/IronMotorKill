@@ -10,21 +10,23 @@
   <p>El vehículo está en reparación</p>
   <p>Hora de entrada: <span id="horaEntrada"></span></p>
   <p>Placas del vehículo: <span id="placas"></span></p>
-  <a href="finalizado.html">Ver reparación finalizada</a>
+  <a id="linkFinalizado" href="#">Ver reparación finalizada</a>
 
   <script>
     // Obtener parámetros de la URL
     const params = new URLSearchParams(window.location.search);
 
-    // Mostrar placas
+    // Mostrar placa
     const placas = params.get("placas");
-    document.getElementById("placas").textContent = placas;
+    document.getElementById("placas").textContent = placas ? placas : "No registrada";
 
-    // Mostrar la hora actual (cuando se abre la página)
-    const ahora = new Date();
-    const hora = ahora.getHours().toString().padStart(2, '0') + ":" +
-                 ahora.getMinutes().toString().padStart(2, '0');
-    document.getElementById("horaEntrada").textContent = hora;
+    // Mostrar hora de entrada (pasada desde mecanico.html)
+    const horaEntrada = params.get("horaEntrada");
+    document.getElementById("horaEntrada").textContent = horaEntrada ? horaEntrada : "No registrada";
+
+    // Pasar los mismos datos al enlace de finalizado
+    const link = document.getElementById("linkFinalizado");
+    link.href = `finalizado.html?placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>
 </body>
 </html>

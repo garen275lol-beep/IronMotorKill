@@ -10,24 +10,25 @@
   <p>Nombre: Juan Pérez</p>
   <p>Hora de entrada: <span id="horaEntrada"></span></p>
   <p>Placas del vehículo: <span id="placas"></span></p>
-  <a href="proceso.html">Ver estado de reparación</a>
+  <a id="linkProceso" href="#">Ver estado de reparación</a>
 
   <script>
-    // Obtener parámetros de la URL
+    // Obtener parámetros de la URL (datos enviados desde registro.html)
     const params = new URLSearchParams(window.location.search);
-
-    // Placas ingresadas en el formulario
     const placas = params.get("placas");
-    document.getElementById("placas").textContent = placas;
 
-    // Hora actual de entrada
+    // Mostrar placa
+    document.getElementById("placas").textContent = placas ? placas : "No registrada";
+
+    // Generar hora actual de entrada
     const ahora = new Date();
-    const hora = ahora.getHours().toString().padStart(2, '0') + ":" +
-                 ahora.getMinutes().toString().padStart(2, '0');
-    document.getElementById("horaEntrada").textContent = hora;
+    const horaEntrada = ahora.getHours().toString().padStart(2, '0') + ":" +
+                        ahora.getMinutes().toString().padStart(2, '0');
+    document.getElementById("horaEntrada").textContent = horaEntrada;
+
+    // Construir enlace hacia proceso.html con los datos incluidos
+    const link = document.getElementById("linkProceso");
+    link.href = `proceso.html?placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>
 </body>
 </html>
-
-</html>
-
