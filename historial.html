@@ -16,10 +16,8 @@
   <a id="linkSalida" href="#">Registrar salida</a>
 
   <script>
-    // Obtener parámetros de la URL
     const params = new URLSearchParams(window.location.search);
 
-    // Mostrar datos del usuario
     document.getElementById("cedula").textContent = params.get("cedula") || "No registrada";
     document.getElementById("telefono").textContent = params.get("telefono") || "No registrado";
     document.getElementById("marca").textContent = params.get("marca") || "No registrada";
@@ -27,10 +25,9 @@
     document.getElementById("placas").textContent = params.get("placas") || "No registrada";
     document.getElementById("horaEntrada").textContent = params.get("horaEntrada") || "No registrada";
 
-    // Pasar los mismos datos al enlace de salida
+    // Construir enlace hacia salida.html con los mismos datos
     const link = document.getElementById("linkSalida");
     link.href = `salida.html?cedula=${params.get("cedula")}&telefono=${params.get("telefono")}&marca=${params.get("marca")}&color=${params.get("color")}&placas=${params.get("placas")}&horaEntrada=${params.get("horaEntrada")}`;
   </script>
 </body>
 </html>
-
