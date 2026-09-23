@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Historial del Vehículo</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>Historial del Vehículo</h2>
@@ -25,7 +24,7 @@
     document.getElementById("placas").textContent = params.get("placas") || "No registrada";
     document.getElementById("horaEntrada").textContent = params.get("horaEntrada") || "No registrada";
 
-    // Construir enlace hacia salida.html con los mismos datos
+    // Construir enlace hacia salida con todos los datos
     const link = document.getElementById("linkSalida");
     link.href = `salida.html?cedula=${params.get("cedula")}&telefono=${params.get("telefono")}&marca=${params.get("marca")}&color=${params.get("color")}&placas=${params.get("placas")}&horaEntrada=${params.get("horaEntrada")}`;
   </script>

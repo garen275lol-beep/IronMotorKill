@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Vehículo en Reparación</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>Estado del Vehículo</h2>
   <p>El vehículo está en reparación</p>
   <p>Hora de entrada: <span id="horaEntrada"></span></p>
   <p>Placas del vehículo: <span id="placas"></span></p>
-  <a id="linkFinalizado" href="#">Ver reparación finalizada</a>
+  <a id="linkHistorial" href="#">Ver historial</a>
 
   <script>
-    // Obtener parámetros de la URL
     const params = new URLSearchParams(window.location.search);
-
-    // Mostrar placa
+    const cedula = params.get("cedula");
+    const telefono = params.get("telefono");
+    const marca = params.get("marca");
+    const color = params.get("color");
     const placas = params.get("placas");
-    document.getElementById("placas").textContent = placas ? placas : "No registrada";
-
-    // Mostrar hora de entrada (pasada desde mecanico.html)
     const horaEntrada = params.get("horaEntrada");
-    document.getElementById("horaEntrada").textContent = horaEntrada ? horaEntrada : "No registrada";
 
-    // Pasar los mismos datos al enlace de finalizado
-    const link = document.getElementById("linkFinalizado");
-    link.href = `finalizado.html?placas=${placas}&horaEntrada=${horaEntrada}`;
+    document.getElementById("placas").textContent = placas || "No registrada";
+    document.getElementById("horaEntrada").textContent = horaEntrada || "No registrada";
+
+    // Construir enlace hacia historial con todos los datos
+    const link = document.getElementById("linkHistorial");
+    link.href = `historial.html?cedula=${cedula}&telefono=${telefono}&marca=${marca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>
 </body>
 </html>

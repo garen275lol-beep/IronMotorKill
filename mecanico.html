@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Mecánico Asignado</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>Datos del Mecánico</h2>
@@ -13,22 +12,24 @@
   <a id="linkProceso" href="#">Ver estado de reparación</a>
 
   <script>
-    // Obtener parámetros de la URL (datos enviados desde registro.html)
     const params = new URLSearchParams(window.location.search);
+    const cedula = params.get("cedula");
+    const telefono = params.get("telefono");
+    const marca = params.get("marca");
+    const color = params.get("color");
     const placas = params.get("placas");
 
-    // Mostrar placa
-    document.getElementById("placas").textContent = placas ? placas : "No registrada";
+    document.getElementById("placas").textContent = placas || "No registrada";
 
-    // Generar hora actual de entrada
+    // Generar hora actual
     const ahora = new Date();
     const horaEntrada = ahora.getHours().toString().padStart(2, '0') + ":" +
                         ahora.getMinutes().toString().padStart(2, '0');
     document.getElementById("horaEntrada").textContent = horaEntrada;
 
-    // Construir enlace hacia proceso.html con los datos incluidos
+    // Construir enlace hacia proceso con todos los datos
     const link = document.getElementById("linkProceso");
-    link.href = `proceso.html?placas=${placas}&horaEntrada=${horaEntrada}`;
+    link.href = `proceso.html?cedula=${cedula}&telefono=${telefono}&marca=${marca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>
 </body>
 </html>
