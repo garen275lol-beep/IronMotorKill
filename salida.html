@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Salida del Vehículo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Salida del Vehículo</h2>
-  <p>Cédula: <span id="cedula"></span></p>
-  <p>Teléfono: <span id="telefono"></span></p>
-  <p>Marca: <span id="marca"></span></p>
-  <p>Color: <span id="color"></span></p>
-  <p>Placas: <span id="placas"></span></p>
-  <p>Hora de entrada: <span id="horaEntrada"></span></p>
-  <p>Hora de salida: <span id="horaSalida"></span></p>
+  <div class="container">
+    <h2>Salida del Vehículo</h2>
+    <p>Cédula: <span id="cedula"></span></p>
+    <p>Teléfono: <span id="telefono"></span></p>
+    <p>Marca: <span id="marca"></span></p>
+    <p>Color: <span id="color"></span></p>
+    <p>Placas: <span id="placas"></span></p>
+    <p>Hora de entrada: <span id="horaEntrada"></span></p>
+    <p>Hora de salida: <span id="horaSalida"></span></p>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
 
-    // Mostrar datos del usuario
+    // Mostrar datos recibidos desde historial.html
     document.getElementById("cedula").textContent = params.get("cedula") || "No registrada";
     document.getElementById("telefono").textContent = params.get("telefono") || "No registrado";
     document.getElementById("marca").textContent = params.get("marca") || "No registrada";
@@ -26,10 +29,4 @@
     document.getElementById("horaEntrada").textContent = params.get("horaEntrada") || "No registrada";
 
     // Generar hora actual como hora de salida
-    const ahora = new Date();
-    const horaSalida = ahora.getHours().toString().padStart(2, '0') + ":" +
-                       ahora.getMinutes().toString().padStart(2, '0');
-    document.getElementById("horaSalida").textContent = horaSalida;
-  </script>
-</body>
-</html>
+    const ahora = new Date

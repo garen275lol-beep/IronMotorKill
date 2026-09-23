@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Vehículo en Reparación</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Estado del Vehículo</h2>
-  <p>El vehículo está en reparación</p>
-  <p>Hora de entrada: <span id="horaEntrada"></span></p>
-  <p>Placas del vehículo: <span id="placas"></span></p>
-  <a id="linkHistorial" href="#">Ver historial</a>
+  <div class="container">
+    <h2>Estado del Vehículo</h2>
+    <p>El vehículo está en reparación</p>
+    <p>Hora de entrada: <span id="horaEntrada"></span></p>
+    <p>Placas del vehículo: <span id="placas"></span></p>
+    <a id="linkHistorial" href="#">Ver historial</a>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -23,7 +26,6 @@
     document.getElementById("placas").textContent = placas || "No registrada";
     document.getElementById("horaEntrada").textContent = horaEntrada || "No registrada";
 
-    // Construir enlace hacia historial con todos los datos
     const link = document.getElementById("linkHistorial");
     link.href = `historial.html?cedula=${cedula}&telefono=${telefono}&marca=${marca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>

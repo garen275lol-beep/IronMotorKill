@@ -1,67 +1,56 @@
-/* Tipografías sugeridas */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Hanken+Grotesk&family=JetBrains+Mono&display=swap');
-
-:root {
-  --primary: #E63946;   /* Rojo principal */
-  --secondary: #A8A29E; /* Gris suave */
-  --tertiary: #1A1A1A;  /* Negro intenso */
-  --neutral: #0F0F0F;   /* Fondo oscuro */
-}
-
 body {
   font-family: 'Hanken Grotesk', sans-serif;
-  background-color: var(--neutral);
+  background-color: #0f0f0f; /* luego puedes cambiar por una imagen */
   color: white;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;   /* centra horizontal */
+  align-items: center;       /* centra vertical */
+  min-height: 100vh;
 }
 
-header {
-  background-color: var(--primary);
-  padding: 20px;
+.container {
+  background-color: rgba(0,0,0,0.7);
+  padding: 30px;
+  border-radius: 10px;
   text-align: center;
+  width: 400px;
 }
 
-header h1 {
+h2 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.5em;
-  margin: 0;
+  margin-bottom: 20px;
 }
 
-nav a, button {
-  display: inline-block;
-  background-color: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  text-decoration: none;
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
   border-radius: 5px;
-  font-family: 'JetBrains Mono', monospace;
+}
+
+button {
+  background-color: #E63946;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-nav a:hover, button:hover {
-  background-color: var(--secondary);
-  color: var(--tertiary);
+button:hover {
+  background-color: #A8A29E;
+  color: #1A1A1A;
 }
 
-form {
-  background-color: var(--tertiary);
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  margin: 20px auto;
+a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #E63946;
+  text-decoration: none;
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: none;
-  border-radius: 5px;
+a:hover {
+  color: #A8A29E;
 }
