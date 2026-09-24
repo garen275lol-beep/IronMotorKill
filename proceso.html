@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Vehículo en Reparación</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <img src="img/screen.png" alt="Logo del Taller" width="120" style="margin-bottom:15px;">
-    <h2>Estado del Vehículo</h2>
-    <p>El vehículo está en reparación</p>
-    <p>Hora de entrada: <span id="horaEntrada"></span></p>
-    <p>Placas del vehículo: <span id="placas"></span></p>
-    <a id="linkHistorial" href="#">Ver historial</a>
-  </div>
+<div class="container">
+  <h2>Estado del Vehículo</h2>
+  <p>El vehículo está en reparación</p>
+  <p>Hora de entrada: <span id="horaEntrada"></span></p>
+  <p>Placas: <span id="placas"></span></p>
+  <p>Tipo de vehículo: <span id="tipoVehiculo"></span></p>
+  <p id="cilindrajeDiv" style="display:none;">Cilindraje: <span id="cilindraje"></span> cc</p>
+  <p>Marca: <span id="marca"></span></p>
+  <a id="linkHistorial" href="#">Ver historial</a>
+</div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const cedula = params.get("cedula");
-    const telefono = params.get("telefono");
-    const marca = params.get("marca");
-    const color = params.get("color");
-    const placas = params.get("placas");
-    const horaEntrada = params.get("horaEntrada");
+<script>
+  const params = new URLSearchParams(window.location.search);
 
-    document.getElementById("placas").textContent = placas || "No registrada";
-    document.getElementById("horaEntrada").textContent = horaEntrada || "No registrada";
+  document.getElementById("horaEntrada").textContent = params.get("horaEntrada") || "No registrada";
+  document.getElementById("placas").textContent = params.get("placas") || "No registrada";
+  document.getElementById("tipoVehiculo").textContent = params.get("tipoVehiculo") || "No registrado";
 
-    const link = document.getElementById("linkHistorial");
-    link.href = `historial.html?cedula=${cedula}&telefono=${telefono}&marca=${marca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
-  </script>
-</body>
-</html>
+  if (params.get("tipoVehiculo") === "Motocicleta" && params.get("cilindraje")) {
+    document.getElementById("cilindrajeDiv").style.display = "block";
+    document.getElementById("cilindraje").textContent = params.get("cilindraje");
+  }
+
+  const marcaSeleccionada = params.get("marca");
+  const otraMarca = params.get("otraMarca");
+  if (marcaSeleccionada === "Otra" && otraMarca) {
+    document.getElementById("marca").textContent = otraMarca;
+  } else {
+    document.getElementById("marca").textContent = marcaSeleccionada || "No registrada";
+  }
+
+  document.getElementById("linkHistorial").href =
+    `historial.html?${params.toString()}`;
+</script>

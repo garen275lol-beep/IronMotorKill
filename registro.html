@@ -9,19 +9,98 @@
   <div class="container">
     <img src="img/screen.png" alt="Logo del Taller" width="120" style="margin-bottom:15px;">
     <h2>Registrar Vehículo</h2>
-    <form action="mecanico.html" method="get">
+    <form action="mecanico.html" method="get" onsubmit="return validarFormulario()">
+      
+      <!-- Cédula -->
       <label>Cédula:</label>
-      <input type="text" name="cedula" required>
+      <input type="text" id="cedula" name="cedula" maxlength="10" minlength="10" required>
+      
+      <!-- Teléfono -->
       <label>Teléfono:</label>
-      <input type="text" name="telefono" required>
+      <input type="text" id="telefono" name="telefono" maxlength="10" minlength="10" required>
+      
+      <!-- Tipo de vehículo -->
+      <label>Tipo de vehículo:</label>
+      <select id="tipoVehiculo" name="tipoVehiculo" onchange="mostrarCilindraje()">
+        <option value="">Seleccione</option>
+        <option value="Carro">Carro</option>
+        <option value="Motocicleta">Motocicleta</option>
+      </select>
+      
+      <!-- Cilindraje (solo si es motocicleta) -->
+      <div id="cilindrajeDiv" style="display:none; margin-top:10px;">
+        <label>Cilindraje (mínimo 100cc):</label>
+        <input type="number" id="cilindraje" name="cilindraje" min="100">
+      </div>
+      
+      <!-- Marca -->
       <label>Marca:</label>
-      <input type="text" name="marca" required>
+      <select id="marca" name="marca" onchange="mostrarOtraMarca()">
+        <option value="">Seleccione una marca</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Mazda">Mazda</option>
+        <option value="Chevrolet">Chevrolet</option>
+        <option value="Renault">Renault</option>
+        <option value="Ford">Ford</option>
+        <option value="Otra">Otra</option>
+      </select>
+      
+      <!-- Otra marca -->
+      <div id="otraMarcaDiv" style="display:none; margin-top:10px;">
+        <label>Escriba la marca:</label>
+        <input type="text" id="otraMarca" name="otraMarca">
+      </div>
+      
+      <!-- Color -->
       <label>Color:</label>
       <input type="text" name="color" required>
+      
+      <!-- Placas -->
       <label>Placas:</label>
       <input type="text" name="placas" required>
+      
       <button type="submit">Continuar</button>
     </form>
   </div>
+
+  <script>
+    // Validar cédula y teléfono
+    function validarFormulario() {
+      const cedula = document.getElementById("cedula").value;
+      const telefono = document.getElementById("telefono").value;
+      const tipoVehiculo = document.getElementById("tipoVehiculo").value;
+      const cilindraje = document.getElementById("cilindraje").value;
+
+      if (!/^\d{10}$/.test(cedula)) {
+        alert("La cédula debe tener exactamente 10 dígitos.");
+        return false;
+      }
+      if (!/^\d{10}$/.test(telefono)) {
+        alert("El teléfono debe tener exactamente 10 dígitos.");
+        return false;
+      }
+      if (tipoVehiculo === "Motocicleta") {
+        if (cilindraje === "" || parseInt(cilindraje) < 100) {
+          alert("El cilindraje debe ser mínimo 100cc.");
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Mostrar campo cilindraje si es motocicleta
+    function mostrarCilindraje() {
+      const tipo = document.getElementById("tipoVehiculo").value;
+      const div = document.getElementById("cilindrajeDiv");
+      div.style.display = (tipo === "Motocicleta") ? "block" : "none";
+    }
+
+    // Mostrar campo otra marca
+    function mostrarOtraMarca() {
+      const marca = document.getElementById("marca").value;
+      const otraDiv = document.getElementById("otraMarcaDiv");
+      otraDiv.style.display = (marca === "Otra") ? "block" : "none";
+    }
+  </script>
 </body>
 </html>

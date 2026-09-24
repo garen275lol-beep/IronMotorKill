@@ -12,18 +12,37 @@
     <p>Nombre: Juan Pérez</p>
     <p>Hora de entrada: <span id="horaEntrada"></span></p>
     <p>Placas del vehículo: <span id="placas"></span></p>
+    <p>Tipo de vehículo: <span id="tipoVehiculo"></span></p>
+    <p id="cilindrajeDiv" style="display:none;">Cilindraje: <span id="cilindraje"></span> cc</p>
+    <p>Marca del vehículo: <span id="marca"></span></p>
     <a id="linkProceso" href="#">Ver estado de reparación</a>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
+
     const cedula = params.get("cedula");
     const telefono = params.get("telefono");
-    const marca = params.get("marca");
     const color = params.get("color");
     const placas = params.get("placas");
+    const tipoVehiculo = params.get("tipoVehiculo");
+    const cilindraje = params.get("cilindraje");
+    const marcaSeleccionada = params.get("marca");
+    const otraMarca = params.get("otraMarca");
 
     document.getElementById("placas").textContent = placas || "No registrada";
+    document.getElementById("tipoVehiculo").textContent = tipoVehiculo || "No registrado";
+
+    if (tipoVehiculo === "Motocicleta" && cilindraje) {
+      document.getElementById("cilindrajeDiv").style.display = "block";
+      document.getElementById("cilindraje").textContent = cilindraje;
+    }
+
+    if (marcaSeleccionada === "Otra" && otraMarca) {
+      document.getElementById("marca").textContent = otraMarca;
+    } else {
+      document.getElementById("marca").textContent = marcaSeleccionada || "No registrada";
+    }
 
     const ahora = new Date();
     const horaEntrada = ahora.getHours().toString().padStart(2, '0') + ":" +
@@ -31,7 +50,7 @@
     document.getElementById("horaEntrada").textContent = horaEntrada;
 
     const link = document.getElementById("linkProceso");
-    link.href = `proceso.html?cedula=${cedula}&telefono=${telefono}&marca=${marca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
+    link.href = `proceso.html?cedula=${cedula}&telefono=${telefono}&tipoVehiculo=${tipoVehiculo}&cilindraje=${cilindraje}&marca=${marcaSeleccionada}&otraMarca=${otraMarca}&color=${color}&placas=${placas}&horaEntrada=${horaEntrada}`;
   </script>
 </body>
 </html>
