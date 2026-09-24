@@ -1,6 +1,6 @@
 body {
   font-family: 'Hanken Grotesk', sans-serif;
-  background-image: url("img/cinematic_dark_and_aggressive_high_.jpg"); /* tu imagen de fondo */
+  background-image: url("img/fondo.png"); /* tu fondo */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,27 +14,27 @@ body {
 }
 
 .container {
-  background-color: rgba(0,0,0,0.7);
-  padding: 30px;
+  background-color: rgba(0,0,0,0.6);
+  padding: 40px;
   border-radius: 10px;
   text-align: center;
-  width: 400px;
+  width: 500px;
 }
 
-h2 {
+.portada h1 {
+  font-size: 48px;          /* nombre grande */
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 20px;
 }
 
-p {
-  margin: 10px 0;
+.portada p {
+  font-size: 18px;
+  margin-bottom: 40px;      /* espacio antes del botón */
 }
 
-a {
+.btn {
   display: inline-block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 15px;
+  padding: 15px 30px;
   border-radius: 5px;
   background-color: #E63946;
   color: white;
@@ -43,8 +43,7 @@ a {
   transition: 0.3s;
 }
 
-a:hover {
+.btn:hover {
   background-color: #A8A29E;
   color: #1A1A1A;
 }
-  

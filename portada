@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>IronMotorKill</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container portada">
+    <h1>IronMotorKill</h1>
+    <p>Bienvenido al sistema de registro de vehículos</p>
+    <a href="registro.html" class="btn">Registrar Vehículo</a>
+  </div>
+</body>
+</html>
