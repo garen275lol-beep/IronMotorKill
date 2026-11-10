@@ -1,198 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Registro de Vehículo</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Registro de Vehículo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container">
-    <img src="img/screen.png" alt="Logo del Taller" width="120" style="margin-bottom:15px;">
-    
-    <h2>Registrar Vehículo</h2>
 
-    <form action="mecanico.html" method="get" onsubmit="return validarFormulario()">
+    <div class="container">
 
-      <!-- Cédula -->
-      <label>Cédula:</label>
-      <input type="text" id="cedula" name="cedula" maxlength="10" minlength="10" required>
+        <img src="img/screen.png"
+             alt="Logo del Taller"
+             width="120"
+             style="margin-bottom:15px;">
 
-      <!-- Teléfono -->
-      <label>Teléfono:</label>
-      <input type="text" id="telefono" name="telefono" maxlength="10" minlength="10" required>
+        <h2>Registrar Vehículo</h2>
 
-      <!-- Tipo de vehículo -->
-      <label>Tipo de vehículo:</label>
-      <select id="tipoVehiculo" name="tipoVehiculo" onchange="cargarMarcas(); mostrarCilindraje();">
-        <option value="">Seleccione</option>
-        <option value="Carro">Carro</option>
-        <option value="Motocicleta">Motocicleta</option>
-      </select>
+        <form action="mecanico.html"
+              method="get"
+              novalidate
+              onsubmit="return validarFormulario()">
 
-      <!-- Cilindraje -->
-      <div id="cilindrajeDiv" style="display:none; margin-top:10px;">
-        <label>Cilindraje (mínimo 100cc):</label>
-        <input type="number" id="cilindraje" name="cilindraje" min="100">
-      </div>
+            <!-- Cédula -->
+            <label>Cédula:</label>
+            <input type="text"
+                   id="cedula"
+                   name="cedula"
+                   required>
 
-      <!-- Marca -->
-      <label>Marca:</label>
-      <select id="marca" name="marca" onchange="mostrarOtraMarca()">
-        <option value="">Seleccione una marca</option>
-      </select>
+            <!-- Teléfono -->
+            <label>Teléfono:</label>
+            <input type="text"
+                   id="telefono"
+                   name="telefono"
+                   required>
 
-      <!-- Otra marca -->
-      <div id="otraMarcaDiv" style="display:none; margin-top:10px;">
-        <label>Escriba la marca:</label>
-        <input type="text" id="otraMarca" name="otraMarca">
-      </div>
+            <!-- Tipo de vehículo -->
+            <label>Tipo de vehículo:</label>
+            <select id="tipoVehiculo"
+                    name="tipoVehiculo"
+                    onchange="cargarMarcas(); mostrarCilindraje();">
 
-      <!-- Color -->
-      <label>Color:</label>
-      <input type="text" name="color" required>
+                <option value="">Seleccione</option>
+                <option value="Carro">Carro</option>
+                <option value="Motocicleta">Motocicleta</option>
 
-      <!-- Placas -->
-      <label>Placas:</label>
-      <input type="text" name="placas" required>
+            </select>
 
-      <button type="submit">Continuar</button>
+            <!-- Cilindraje -->
+            <div id="cilindrajeDiv"
+                 style="display:none; margin-top:10px;">
 
-    </form>
-  </div>
+                <label>Cilindraje (mínimo 100cc):</label>
 
-  <script>
+                <input type="number"
+                       id="cilindraje"
+                       name="cilindraje">
 
-    const marcasCarro = [
-      "Toyota",
-      "Mazda",
-      "Ford",
-      "Renault",
-      "Chevrolet"
-    ];
+            </div>
 
-    const marcasMoto = [
-      "Nkd",
-      "Pulsar",
-      "Yamaha",
-      "Kawasaki",
-      "Vento",
-      "Bera",
-      "Vogue",
-      "Dominar",
-      "CF Moto"
-    ];
+            <!-- Marca -->
+            <label>Marca:</label>
 
-    function validarFormulario() {
+            <select id="marca"
+                    name="marca"
+                    onchange="mostrarOtraMarca()">
 
-      const cedula = document.getElementById("cedula").value;
-      const telefono = document.getElementById("telefono").value;
-      const tipoVehiculo = document.getElementById("tipoVehiculo").value;
-      const cilindraje = document.getElementById("cilindraje").value;
+                <option value="">Seleccione una marca</option>
 
-      /*
-      BUG 1   
-         Defecto:
-      Permite cédulas entre 5 y 10 dígitos.
-      */
+            </select>
 
-      if (!/^\d{5,10}$/.test(cedula)) {
-        alert("La cédula debe tener exactamente 10 dígitos.");
-        return false;
-      }
+            <!-- Otra marca -->
+            <div id="otraMarcaDiv"
+                 style="display:none; margin-top:10px;">
 
-      /*
-      Teléfono sigue funcionando normal
-      */
+                <label>Escriba la marca:</label>
 
-      if (!/^\d{10}$/.test(telefono)) {
-        alert("El teléfono debe tener exactamente 10 dígitos.");
-        return false;
-      }
+                <input type="text"
+                       id="otraMarca"
+                       name="otraMarca">
 
-      /*
-      BUG 2
-      Defecto:
-      Permite motocicletas con menos de 100cc.
-      */
+            </div>
 
-      if (tipoVehiculo === "Motocicleta") {
+            <!-- Color -->
+            <label>Color:</label>
+            <input type="text"
+                   name="color"
+                   required>
 
-        if (cilindraje === "" || parseInt(cilindraje) < 10) {
-          alert("El cilindraje debe ser mínimo 100cc.");
-          return false;
+            <!-- Placas -->
+            <label>Placas:</label>
+            <input type="text"
+                   name="placas"
+                   required>
+
+            <button type="submit">
+                Continuar
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        const marcasCarro = [
+            "Toyota",
+            "Mazda",
+            "Ford",
+            "Renault",
+            "Chevrolet"
+        ];
+
+        const marcasMoto = [
+            "Nkd",
+            "Pulsar",
+            "Yamaha",
+            "Kawasaki",
+            "Vento",
+            "Bera",
+            "Voge",
+            "Dominar",
+            "CF Moto"
+        ];
+
+        function validarFormulario() {
+
+            const cedula =
+                document.getElementById("cedula").value;
+
+            const telefono =
+                document.getElementById("telefono").value;
+
+            const tipoVehiculo =
+                document.getElementById("tipoVehiculo").value;
+
+            const cilindraje =
+                document.getElementById("cilindraje").value;
+
+            /* BUG 1 */
+            if (!/^\d{5,10}$/.test(cedula)) {
+                alert("La cédula debe tener exactamente 10 dígitos.");
+                return false;
+            }
+
+            /* BUG 2 */
+            if (!/^\d{3,10}$/.test(telefono)) {
+                alert("El teléfono debe tener exactamente 10 dígitos.");
+                return false;
+            }
+
+            /* BUG 3 */
+            if (tipoVehiculo === "Motocicleta") {
+
+                if (
+                    cilindraje === "" ||
+                    parseInt(cilindraje) < 10
+                ) {
+                    alert("El cilindraje debe ser mínimo 100cc.");
+                    return false;
+                }
+
+            }
+
+            /* BUG EXTRA:
+               No se valida el tipo de vehículo */
+
+            return true;
         }
-      }
 
-      /*
-      BUG 3
-      
-      Defecto:
-      Se puede dejar sin escoger el tipo de vehiculo.
-      */
+        function mostrarCilindraje() {
 
-      return true;
-    }
+            const tipo =
+                document.getElementById("tipoVehiculo").value;
 
-    function mostrarCilindraje() {
-      const tipo = document.getElementById("tipoVehiculo").value;
-      const div = document.getElementById("cilindrajeDiv");
+            const div =
+                document.getElementById("cilindrajeDiv");
 
-      div.style.display =
-        (tipo === "Motocicleta")
-          ? "block"
-          : "none";
-    }
+            div.style.display =
+                (tipo === "Motocicleta")
+                ? "block"
+                : "none";
+        }
 
-    function cargarMarcas() {
+        function cargarMarcas() {
 
-      const tipo = document.getElementById("tipoVehiculo").value;
-      const marcaSelect = document.getElementById("marca");
+            const tipo =
+                document.getElementById("tipoVehiculo").value;
 
-      marcaSelect.innerHTML =
-        '<option value="">Seleccione una marca</option>';
+            const marcaSelect =
+                document.getElementById("marca");
 
-      let lista = [];
+            marcaSelect.innerHTML =
+                '<option value="">Seleccione una marca</option>';
 
-      if (tipo === "Carro") {
-        lista = marcasCarro;
-      }
+            let lista = [];
 
-      else if (tipo === "Motocicleta") {
-        lista = marcasMoto;
-      }
+            if (tipo === "Carro") {
+                lista = marcasCarro;
+            }
+            else if (tipo === "Motocicleta") {
+                lista = marcasMoto;
+            }
 
-      lista.forEach(marca => {
+            lista.forEach(marca => {
 
-        const option = document.createElement("option");
+                const option =
+                    document.createElement("option");
 
-        option.value = marca;
-        option.textContent = marca;
+                option.value = marca;
+                option.textContent = marca;
 
-        marcaSelect.appendChild(option);
+                marcaSelect.appendChild(option);
+            });
 
-      });
+            const otraOption =
+                document.createElement("option");
 
-      const otraOption = document.createElement("option");
+            otraOption.value = "Otra";
+            otraOption.textContent = "Otra";
 
-      otraOption.value = "Otra";
-      otraOption.textContent = "Otra";
+            marcaSelect.appendChild(otraOption);
+        }
 
-      marcaSelect.appendChild(otraOption);
-    }
+        function mostrarOtraMarca() {
 
-    function mostrarOtraMarca() {
+            const marca =
+                document.getElementById("marca").value;
 
-      const marca = document.getElementById("marca").value;
-      const otraDiv = document.getElementById("otraMarcaDiv");
+            const otraDiv =
+                document.getElementById("otraMarcaDiv");
 
-      otraDiv.style.display =
-        (marca === "Otra")
-          ? "block"
-          : "none";
-    }
+            otraDiv.style.display =
+                (marca === "Otra")
+                ? "block"
+                : "none";
+        }
 
-  </script>
+    </script>
 
 </body>
 </html>
